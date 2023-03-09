@@ -18,12 +18,12 @@ def main():
     file.close()
 
 def func(diameter):
-    array = np.zeros((diameter,diameter), dtype=bool).tolist()
+    array = np.zeros((diameter,diameter), dtype=int).tolist()
     cirCen = diameter / 2
     for x in range(diameter):
         for y in range(diameter):
             if ((x + 0.5 - cirCen)**2 + (y + 0.5 - cirCen)**2 <= cirCen**2):
-                array[x][y] = True
+                array[x][y] = 1
 
     return array
 
@@ -36,7 +36,7 @@ def generateCases(numCircles):
     return outStr
 
 def arrToJavaCode(array):
-    arrayString = str(array).replace("[[", "{\n\t\t{").replace("[", "{").replace("], ","},\n\t\t").replace("]]","}\n\t}").replace("False","false").replace("True","true")
+    arrayString = str(array).replace("[[", "{\n\t\t{").replace("[", "{").replace("], ","},\n\t\t").replace("]]","}\n\t}")#.replace("False","false").replace("True","true")
     return arrayString
 
 main()
